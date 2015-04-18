@@ -1,0 +1,15 @@
+{
+    "name": "zxqfox/php-benchs",
+    "description": "some benchs for dev purposes",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alexej Yaroshevich",
+            "email": "alex@qfox.ru"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "lijinma/commander": "dev-master"
+    }
+}
