@@ -24,7 +24,17 @@ $filelen = 40;
 $headpat = "%-{$filelen}s   | %-8s | %-8s | %-8s | %-10s";
 $pat = "  %{$filelen}s | %8.5F | %8.5F | %8.5F | %10.5F";
 
-foreach($cmd->_unknownArgs as $i => $file) {
+$setup = null;
+$tests = array_filter($cmd->_unknownArgs, function ($file) use (&$setup) {
+    if (strpos($file, '/_setup.php') !== false) {
+        $setup = $file;
+        return false;
+    }
+    return true;
+});
+
+include_once $setup;
+foreach($tests as $i => $file) {
     if (!file_exists($file)) {
         echo 'Error: file ' . $file . ' not found' . PHP_EOL;
         continue;
